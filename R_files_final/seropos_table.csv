@@ -1,0 +1,15 @@
+House Number,Animal ID,Species,Timepoint (Days),IgM Result,IgG Result,Virus Neutralization Test
+3,6,Feline,120,NA,Positive,
+7,14,Canine,120,Positive,Positive,Positive
+9,19,Canine,120,Negative,Positive,Negative
+10,20,Canine,120,Negative,Positive,Positive
+13,25,Canine,120,Positive,Negative,Positive
+14,26,Canine,120,Positive,Positive,Positive
+15,29,Canine,180,Negative,Positive,
+23,46,Canine,28,Positive,Positive,Positive
+25,48,Feline,28,NA,Positive,Positive
+25,52,Feline,28,NA,Positive,Positive
+25,53,Feline,28,NA,Positive,
+27,57,Canine,28,Positive,Positive,Positive
+28,58,Canine,28,Positive,Positive,
+32,67,Canine,28,Positive,Positive,Positive

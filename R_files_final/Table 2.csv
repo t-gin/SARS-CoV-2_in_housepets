@@ -1,0 +1,15 @@
+House Number,Species,Timepoint (Days),IgM Result,IgG Result
+03,Feline,120,NA,Positive
+07,Canine,120,Positive,Positive
+09,Canine,120,Negative,Positive
+10,Canine,120,Negative,Positive
+13,Canine,120,Positive,Negative
+14,Canine,120,Positive,Positive
+15,Canine,180,Negative,Positive
+23,Canine,28,Positive,Positive
+25,Feline,28,NA,Positive
+25,Feline,28,NA,Positive
+25,Feline,28,NA,Positive
+27,Canine,28,Positive,Positive
+28,Canine,28,Positive,Positive
+32,Canine,28,Positive,Positive

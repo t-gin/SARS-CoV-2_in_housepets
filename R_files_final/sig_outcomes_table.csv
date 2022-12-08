@@ -1,0 +1,4 @@
+Exposure,Outcome,Odds Ratio,p value,95% Confidence Interval
+Contact with owner's bed,IgG positive,9.61,0.0397,0.877 to 529.2
+Known to lick plates in dishwasher,IgG positive,0.104,0.0397,0.00189 to 1.14
+Allowed on furniture,IgG positive,Inf,0.0481,0.930 to Inf
