@@ -1,7 +1,0 @@
-Household,Species,Timepoint,Sample,Viral Load (RNA cp/mL),PCR Result,COBAS result
-05,Feline,28,Oral,2399,Positive,Negative
-05,Canine,28,Rectal,1170,Positive,Positive
-22,Feline,0,Oral,3333,Positive,Positive
-22,Feline,0,Rectal,75,Positive,Positive
-22,Canine,0,Oral,592,Positive,Positive
-22,Canine,0,Rectal,206,Positive,Positive

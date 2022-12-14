@@ -21,7 +21,7 @@ library(tiff)
 library(stringr)
 library(broom)
 library(epitools)
-setwd("/Users/tegin/Desktop/GitHub/COVID/R_files_final")
+setwd("/Users/tegin/Desktop/GitHub2/SARS-CoV-2_in_housepets/R_files_final")
 ```
 
 # Read-in spreadsheets
@@ -118,7 +118,7 @@ D_IgG<-
   ggplot()+
   geom_point(aes(x=IgG1_OD, y=IgG2_OD, color=Control_real))+
   theme_bw() +
-  geom_point(data=subset(sample_data, Control_real=="Pre-2019 control" & Species=="Canine"),mapping = aes(x=IgG2_OD, y=IgG2_OD))+
+  geom_point(data=subset(sample_data, Control_real=="Masked pre-2019 serological control" & Species=="Canine"),mapping = aes(x=IgG2_OD, y=IgG2_OD))+
   labs(color = "Sample Type")+
        geom_point(data=sample_data %>% filter(IgG1_OD==0.69),
              pch=21,
@@ -126,7 +126,7 @@ D_IgG<-
              size=4,
              color="black", mapping=aes(x=IgG2_OD, y=IgG2_OD)) +
   theme(plot.title = element_text(hjust = 0.5)) +
-  scale_color_manual(values = c("Pre-2019 control" = "black", "Real sample" = "coral"))+
+  scale_color_manual(values = c("Masked pre-2019 serological control" = "black", "Housepet serum sample" = "coral"))+
   geom_vline(xintercept = 1, linetype="dotted", 
                 color = "black", size=0.5) +
   geom_hline(yintercept = 1, linetype="dotted", 
@@ -145,7 +145,7 @@ D_IgM<-sample_data %>%
   ggplot()+
   geom_point(aes(x=IgM1_OD, y=IgM2_OD, color=Control_real))+
   theme_bw() +
-  geom_point(data=subset(sample_data, Control_real=="Pre-2019 control" & Species=="Canine"),mapping = aes(x=IgM2_OD, y=IgM2_OD))+
+  geom_point(data=subset(sample_data, Control_real=="Masked pre-2019 serological control" & Species=="Canine"),mapping = aes(x=IgM2_OD, y=IgM2_OD))+
   labs(color = "Sample Type")+
        geom_point(data=sample_data %>% filter(IgM2_OD==0.525),
              pch=21,
@@ -153,7 +153,7 @@ D_IgM<-sample_data %>%
              size=4,
              color="black", mapping=aes(x=IgM2_OD, y=IgM2_OD)) +
   theme(plot.title = element_text(hjust = 0.5)) +
-  scale_color_manual(values = c("Pre-2019 control" = "black", "Real sample" = "coral"))+
+  scale_color_manual(values = c("Masked pre-2019 serological control" = "black", "Housepet serum sample" = "coral"))+
   #geom_vline(xintercept = 0.75, linetype="dotted", 
                # color = "black", size=0.5) +
  # geom_hline(yintercept = 0.75, linetype="dotted", 
@@ -173,7 +173,7 @@ C_IgG<-
   ggplot()+
   geom_point(aes(x=IgG1_OD, y=IgG2_OD, color=Control_real))+
   theme_bw() +
-  geom_point(data=subset(sample_data, Control_real=="Pre-2019 control" & Species=="Canine"),mapping = aes(x=IgG2_OD, y=IgG2_OD))+
+  geom_point(data=subset(sample_data, Control_real=="Masked pre-2019 serological control" & Species=="Canine"),mapping = aes(x=IgG2_OD, y=IgG2_OD))+
   labs(color = "Sample Type")+
        geom_point(data=sample_data %>% filter(IgG1_OD==0.164 | IgG1_OD==0.18 | IgG1_OD==0.96),
              pch=21,
@@ -181,7 +181,7 @@ C_IgG<-
              size=4,
              color="black", mapping=aes(x=IgG2_OD, y=IgG2_OD)) +
   theme(plot.title = element_text(hjust = 0.5)) +
-  scale_color_manual(values = c("Pre-2019 control" = "black", "Real sample" = "coral"))+
+  scale_color_manual(values = c("Masked pre-2019 serological control" = "black", "Housepet serum sample" = "coral"))+
   geom_vline(xintercept = 0.8, linetype="dotted", 
                 color = "black", size=0.5) +
   geom_hline(yintercept = 0.8, linetype="dotted", 
@@ -199,9 +199,9 @@ C_IgM<-sample_data %>%
   ggplot()+
   geom_point(aes(x=IgM1_OD, y=IgM2_OD, color=Control_real))+
   theme_bw() +
-  geom_point(data=subset(sample_data, Control_real=="Pre-2019 control" & Species=="Canine"),mapping = aes(x=IgM2_OD, y=IgM2_OD))+
+  geom_point(data=subset(sample_data, Control_real=="Masked pre-2019 serological control" & Species=="Canine"),mapping = aes(x=IgM2_OD, y=IgM2_OD))+
   labs(color = "Sample Type")+
-  scale_color_manual(values = c("Pre-2019 control" = "black", "Real sample" = "coral"))+
+  scale_color_manual(values = c("Masked pre-2019 serological control" = "black", "Housepet serum sample" = "coral"))+
   geom_point(data=sample_data %>% filter(IgM2_OD==0.79 | IgM2_OD==0.767 | IgM2_OD==0.494),
              pch=21,
              fill=NA,
