@@ -21,7 +21,8 @@ library(tiff)
 library(stringr)
 library(broom)
 library(epitools)
-setwd("/Users/tegin/Desktop/GitHub2/SARS-CoV-2_in_housepets/R_files_final")
+library('ggpubr')
+setwd("/Users/crgin/Documents/GitHub/SARS-CoV-2_in_housepets/R_files_final")
 ```
 
 # Read-in spreadsheets
@@ -119,13 +120,15 @@ D_IgG<-
   geom_point(aes(x=IgG1_OD, y=IgG2_OD, color=Control_real))+
   theme_bw() +
   geom_point(data=subset(sample_data, Control_real=="Masked pre-2019 serological control" & Species=="Canine"),mapping = aes(x=IgG2_OD, y=IgG2_OD))+
-  labs(color = "Sample Type")+
+  labs(color = "Sample Type", tag='A')+
        geom_point(data=sample_data %>% filter(IgG1_OD==0.69),
              pch=21,
              fill=NA,
              size=4,
              color="black", mapping=aes(x=IgG2_OD, y=IgG2_OD)) +
-  theme(plot.title = element_text(hjust = 0.5)) +
+  theme(plot.title = element_text(hjust = 0.5), 
+        legend.text=element_text(size=12),
+        legend.title = element_blank()) +
   scale_color_manual(values = c("Masked pre-2019 serological control" = "black", "Housepet serum sample" = "coral"))+
   geom_vline(xintercept = 1, linetype="dotted", 
                 color = "black", size=0.5) +
@@ -146,7 +149,7 @@ D_IgM<-sample_data %>%
   geom_point(aes(x=IgM1_OD, y=IgM2_OD, color=Control_real))+
   theme_bw() +
   geom_point(data=subset(sample_data, Control_real=="Masked pre-2019 serological control" & Species=="Canine"),mapping = aes(x=IgM2_OD, y=IgM2_OD))+
-  labs(color = "Sample Type")+
+  labs(color = "Sample Type", tag='B')+
        geom_point(data=sample_data %>% filter(IgM2_OD==0.525),
              pch=21,
              fill=NA,
@@ -174,7 +177,7 @@ C_IgG<-
   geom_point(aes(x=IgG1_OD, y=IgG2_OD, color=Control_real))+
   theme_bw() +
   geom_point(data=subset(sample_data, Control_real=="Masked pre-2019 serological control" & Species=="Canine"),mapping = aes(x=IgG2_OD, y=IgG2_OD))+
-  labs(color = "Sample Type")+
+  labs(color = "Sample Type", tag='C')+
        geom_point(data=sample_data %>% filter(IgG1_OD==0.164 | IgG1_OD==0.18 | IgG1_OD==0.96),
              pch=21,
              fill=NA,
@@ -194,13 +197,14 @@ C_IgG<-
 ## Cat IgM ODs
 
 ```{r}
+
 C_IgM<-sample_data %>% 
   filter(Species=="Feline") %>% 
   ggplot()+
   geom_point(aes(x=IgM1_OD, y=IgM2_OD, color=Control_real))+
   theme_bw() +
   geom_point(data=subset(sample_data, Control_real=="Masked pre-2019 serological control" & Species=="Canine"),mapping = aes(x=IgM2_OD, y=IgM2_OD))+
-  labs(color = "Sample Type")+
+  labs(color = "Sample Type", tag='D')+
   scale_color_manual(values = c("Masked pre-2019 serological control" = "black", "Housepet serum sample" = "coral"))+
   geom_point(data=sample_data %>% filter(IgM2_OD==0.79 | IgM2_OD==0.767 | IgM2_OD==0.494),
              pch=21,
@@ -212,24 +216,19 @@ C_IgM<-sample_data %>%
   xlab("Round 1") + ylab("Round 2") 
 ```
 
-## Make single figure
+## Combine into one figure
 
 ```{r}
-OD_figure<-plot_grid(D_IgG, D_IgM, C_IgG, C_IgM, labels = c('A', 'B', 'C', 'D'), rel_heights = c(1, 1, 1, 1))
+OD_figure <- ggarrange(D_IgG, D_IgM, C_IgG, C_IgM, ncol=2, nrow=2, common.legend = TRUE, legend='bottom', font.label = list(size=24))
+OD_figure <- annotate_figure(OD_figure, 
+                             top = text_grob("Round 1 vs Round 2 Optical Densities for Canine and Feline anti-SARS-CoV-2 IgG and IgM", 
+                             face = "bold",
+                             size = 16))
 
-titleOD<-ggdraw() + 
-  draw_label(
-    "Round 1 vs Round 2 Optical Densities for Canine and Feline anti-SARS-CoV-2 IgG and IgM",
-    fontface='bold')
-
-OD_figure<-plot_grid(
-  titleOD, OD_figure,
-  ncol = 1,
-  rel_heights = c(0.1, 1)
-)
 
 OD_figure
 ggsave("Figure_1.pdf", plot=OD_figure, width=35, height=20, units="cm")
+```
 ```
 
 # Demographic data
