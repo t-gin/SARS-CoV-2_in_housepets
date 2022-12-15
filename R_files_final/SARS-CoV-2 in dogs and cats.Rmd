@@ -22,7 +22,7 @@ library(stringr)
 library(broom)
 library(epitools)
 library('ggpubr')
-setwd("/Users/crgin/Documents/GitHub/SARS-CoV-2_in_housepets/R_files_final")
+setwd("/Users/tegin/Desktop/GitHub2/SARS-CoV-2_in_housepets/R_files_final")
 ```
 
 # Read-in spreadsheets
@@ -134,10 +134,11 @@ D_IgG<-
                 color = "black", size=0.5) +
   geom_hline(yintercept = 1, linetype="dotted", 
                 color = "black", size=0.5)+
-  geom_text(aes(1, 0.95, label = "Proposed cut-off=1.0", hjust = -.1), check_overlap = TRUE) +
-  geom_text(aes(0.38, 1.77, label = "Outlier", hjust = -.1), check_overlap = TRUE) +
+  geom_text(aes(1, 0.93, label = "Proposed cut-off=1.0", hjust = -.1), check_overlap = TRUE) +
+  geom_text(aes(0.35, 1.77, label = "Outlier", hjust = -.1), check_overlap = TRUE) +
   ggtitle("Dog IgG") +
-  xlab("Round 1") + ylab("Round 2") 
+  xlab("Round 1") + ylab("Round 2") +
+  xlim(0, 2.5) + ylim(0, 2.5)
 ```
 
 ## Dog IgM ODs
@@ -157,14 +158,10 @@ D_IgM<-sample_data %>%
              color="black", mapping=aes(x=IgM2_OD, y=IgM2_OD)) +
   theme(plot.title = element_text(hjust = 0.5)) +
   scale_color_manual(values = c("Masked pre-2019 serological control" = "black", "Housepet serum sample" = "coral"))+
-  #geom_vline(xintercept = 0.75, linetype="dotted", 
-               # color = "black", size=0.5) +
- # geom_hline(yintercept = 0.75, linetype="dotted", 
-               # color = "black", size=0.5)+
-  #geom_text(aes(.73, 0.65, label = "Proposed cut-off=0.75", hjust = -.1), check_overlap = TRUE) +
-  geom_text(aes(0.16, 2.3, label = "Outlier", hjust = -.1), check_overlap = TRUE) +
+  geom_text(aes(0.12, 2.3, label = "Outlier", hjust = -.1), check_overlap = TRUE) +
   ggtitle("Dog IgM") +
-  xlab("Round 1") + ylab("Round 2") 
+  xlab("Round 1") + ylab("Round 2") +
+  xlim(0, 2.5) + ylim(0, 2.5)
 ```
 
 ## Cat IgG ODs
@@ -189,9 +186,10 @@ C_IgG<-
                 color = "black", size=0.5) +
   geom_hline(yintercept = 0.8, linetype="dotted", 
                 color = "black", size=0.5)+
-  geom_text(aes(0.8, 0.75, label = "Proposed cut-off=0.8", hjust = -.1), check_overlap = TRUE) +
+  geom_text(aes(0.8, 0.73, label = "Proposed cut-off=0.8", hjust = -.1), check_overlap = TRUE) +
   ggtitle("Cat IgG") +
-  xlab("Round 1") + ylab("Round 2") 
+  xlab("Round 1") + ylab("Round 2") +
+  xlim(0, 2.5) + ylim(0, 2.5)
 ```
 
 ## Cat IgM ODs
@@ -213,7 +211,8 @@ C_IgM<-sample_data %>%
              color="black", mapping=aes(x=IgM2_OD, y=IgM2_OD)) +
   theme(plot.title = element_text(hjust = 0.5)) +
   ggtitle("Cat IgM") +
-  xlab("Round 1") + ylab("Round 2") 
+  xlab("Round 1") + ylab("Round 2") +
+  xlim(0, 2.5) + ylim(0, 2.5)
 ```
 
 ## Combine into one figure
