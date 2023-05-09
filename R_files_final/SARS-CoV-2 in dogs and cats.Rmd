@@ -108,8 +108,27 @@ ggplot() +
   facet_wrap(~Sample_Type)+
   scale_y_discrete(guide = guide_axis(n.dodge=2))
 ```
+# Figure 1
 
-# Create figure 1
+## Sample types collected by species
+```{r}
+figure_1<-sample_data %>% 
+  ggplot() +
+  geom_bar(aes(x= Species, fill= Sample_Type), position = position_dodge(preserve = 'single')) +
+  ggtitle("Sample Types Collected By Species")+
+  xlab("Species sampled") +
+  ylab("Number of samples") +
+  theme(plot.title = element_text(hjust = 0.5)) +
+  guides(fill=guide_legend(title="Sample Type"))
+
+
+
+ggsave("/Users/tegin/Desktop/COVID_manuscript/manuscript/Submission_3/figure_1.pdf", plot=figure_1)
+
+
+```
+
+# Figure 2
 
 ## Dog IgG ODs
 
@@ -229,14 +248,16 @@ C_IgM<-sample_data %>%
 
 ```{r}
 OD_figure <- ggarrange(D_IgG, D_IgM, C_IgG, C_IgM, ncol=2, nrow=2, common.legend = TRUE, legend='bottom', font.label = list(size=24))
-OD_figure <- annotate_figure(OD_figure, 
-                             top = text_grob("Round 1 vs Round 2 Optical Densities for Canine and Feline anti-SARS-CoV-2 IgG and IgM", 
-                             face = "bold",
-                             size = 16))
+OD_figure <- annotate_figure(OD_figure)#, 
+                            # top = text_grob("Round 1 vs Round 2 Optical Densities for Canine and Feline anti-SARS-CoV-2 IgG and IgM", 
+                            # face = "bold",
+                             #size = 16))
 
 
 OD_figure
-ggsave("Figure_1.pdf", plot=OD_figure, width=35, height=20, units="cm")
+#ggsave("Figure_1.pdf", plot=OD_figure, width=35, height=20, units="cm")
+
+ggsave("/Users/tegin/Desktop/COVID_manuscript/manuscript/Submission_3/figure_2.pdf", plot=OD_figure, width=35, height=20, units="cm")
 ```
 
 
